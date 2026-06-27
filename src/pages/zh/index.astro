@@ -11,6 +11,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <Fragment slot="footer-name">Axsetra Banki</Fragment>
 
   <section class="hero">
+    <img src="/images/logo.webp" alt="Logo" class="hero-logo" width="200" height="auto" />
     <h1>Axsetra Banki</h1>
     <p class="tagline">隐私与性能的完美结合</p>
     <p>100%在线。无实体网点。在家即可轻松开设免费银行账户。</p>
@@ -60,6 +61,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
+  .hero-logo {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
   .tagline { font-size: 1.4rem; font-weight: 600; opacity: 1; margin-bottom: 8px; }
   .registration-info { background: white; border-radius: 8px; padding: 32px; margin-top: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; }
   .registration-info h2 { margin-bottom: 16px; color: #1a1a2e; }

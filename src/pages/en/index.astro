@@ -11,6 +11,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <Fragment slot="footer-name">Axsetra Banki</Fragment>
 
   <section class="hero">
+    <img src="/images/logo.webp" alt="Logo" class="hero-logo" width="200" height="auto" />
     <h1>Axsetra Banki</h1>
     <p class="tagline">Where privacy meets performance</p>
     <p>100% online. No branches. Open a free bank account comfortably from home.</p>
@@ -60,6 +61,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
+  .hero-logo {
+    max-width: 200px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+  }
   .tagline {
     font-size: 1.4rem;
     font-weight: 600;
