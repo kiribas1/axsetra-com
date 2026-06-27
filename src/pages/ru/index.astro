@@ -1,74 +1,312 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const lang = 'ru';
+const currentPath = Astro.url.pathname;
+const locales = ['en', 'es', 'zh', 'ru', 'pt', 'ar'];
+const langNames: Record<string, string> = {
+  en: 'English', es: 'Espanol', zh: '中文', ru: 'Русский', pt: 'Portugues', ar: 'العربية',
+};
 ---
 
 <BaseLayout
-  title="Axsetra Banki | Цифровой банк с приватностью"
-  description="100% онлайн цифровой банк. Без отделений. Откройте бесплатный банковский счёт, не выходя из дома. Личные, бизнес и корпоративные счета с крипто-сервисами."
-  lang="ru"
+  title="Axsetra Banki | Цифровые финансовые услуги, счета и международные платежи"
+  description="Axsetra Banki предоставляет современные цифровые финансовые услуги для физических и юридических лиц: инфраструктура счетов, карты и решения для международных платежей."
+  lang={lang}
+  ogImage="https://axsetra.com/images/logo.webp"
 >
-  <Fragment slot="logo">Axsetra Banki</Fragment>
-  <Fragment slot="footer-name">Axsetra Banki</Fragment>
 
-  <section class="hero">
-    <img src="/images/logo.webp" alt="Logo" class="hero-logo" width="200" height="auto" />
-    <h1>Axsetra Banki</h1>
-    <p class="tagline">Где приватность встречается с производительностью</p>
-    <p>100% онлайн. Без отделений. Откройте бесплатный банковский счёт, не выходя из дома.</p>
-  </section>
-
-  <div class="ad-slot">Рекламное место - Google AdSense</div>
-
-  <div class="card-grid">
-    <article class="card">
-      <h2>Личные счета</h2>
-      <p>Дебетовые и виртуальные карты, крипто-дружественные сервисы, анонимные карты для повышенной конфиденциальности. Связь только по электронной почте, без телефонных звонков.</p>
-    </article>
-    <article class="card">
-      <h2>Бизнес-счета</h2>
-      <p>Для предпринимателей и компаний, работающих через границы. Карты для сотрудников с контролем расходов и возможностью криптовалютных платежей.</p>
-    </article>
-    <article class="card">
-      <h2>Корпоративные счета</h2>
-      <p>Продвинутые финансовые решения для корпоративных структур, требующих масштабируемости, конфиденциальности и международного охвата. Поддержка нескольких юридических лиц и карты с высоким уровнем приватности.</p>
-    </article>
-    <article class="card">
-      <h2>Гарантийный депозит KIFA</h2>
-      <p>Специализированный счёт для лицензионного капитала. Средства остаются собственностью акционеров при ограничительных условиях, отдельно от операционных счетов.</p>
-    </article>
-    <article class="card">
-      <h2>Крипто-сервисы</h2>
-      <p>Мультисетевые крипто-кошельки, хранение в холодных кошельках, обмен криптовалюты на фиат и опции стейкинга.</p>
-    </article>
-    <article class="card">
-      <h2>Карточные сети</h2>
-      <p>Visa, UnionPay, Maestro. Только электронные выписки.</p>
-    </article>
+<!-- NAVBAR -->
+<header class="app-header">
+  <div class="container">
+    <div class="d-flex flex-column flex-md-row align-items-center py-3">
+      <a href={`/${lang}/`} class="d-flex align-items-center text-decoration-none">
+        <img src="/images/logo.webp" alt="Axsetra Banki" height="110" class="me-2" />
+      </a>
+      <div class="mt-3 mt-md-0 ms-md-auto text-center text-md-end w-100 w-md-auto d-flex flex-column flex-md-row align-items-center gap-3">
+        <nav class="lang-nav">
+          {locales.map((loc) => {
+            const path = currentPath.replace(`/${lang}/`, `/${loc}/`);
+            return <a href={path} class={loc === lang ? 'active' : ''}>{langNames[loc]}</a>;
+          })}
+        </nav>
+        <div>
+          <a href="/login" class="me-3 fw-semibold" style="color:#dc3545;">Войти</a>
+          <a href="/open-account" class="btn btn-danger py-2 px-3">Открыть счёт онлайн</a>
+        </div>
+      </div>
+    </div>
   </div>
+</header>
 
-  <div class="ad-slot">Рекламное место - Google AdSense</div>
+<main class="flex-fill">
 
-  <section class="registration-info">
-    <h2>Регистрация и правовая информация</h2>
-    <p><strong>Регистрация компании:</strong> CP-000022</p>
-    <p><strong>Лицензия (KBN):</strong> KBN-90-000001</p>
-    <p><strong>Зарегистрированный офис:</strong> London (KI)</p>
-    <p><strong>Место деятельности:</strong> Киритимати, Кирибати</p>
-    <p><strong>Контакт:</strong> info@axsetra.com | +686 75127188</p>
-  </section>
+<!-- HERO -->
+<section class="hero-wk">
+  <div class="hero-overlay"></div>
+  <div class="container position-relative py-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="hero-panel hero-text">
+          <p class="lead hero-lead mb-3 fs-1 fw-bolder"><strong>Где приватность встречается с производительностью</strong> в современном цифровом банкинге.</p>
+          <p class="lead hero-lead mb-4 fs-5 fw-bolder">Мы помогаем физическим и юридическим лицам управлять платежами, счетами и цифровыми активами через безопасную, ориентированную на конфиденциальность и высокопроизводительную финансовую платформу — созданную для глобального цифрового мира.</p>
+          <p class="lead hero-lead mb-4 fs-6 fw-bolder">100% онлайн. Без отделений. Откройте бесплатный банковский счёт, не выходя из дома.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="/open-account" class="btn btn-light btn-lg px-4">Открыть счёт</a>
+            <a href="/login" class="btn btn-outline-light btn-lg px-4">Войти</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <div class="ad-slot">Рекламное место - Google AdSense</div>
+<!-- AD SLOT -->
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2701690512336282" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</div>
+
+<!-- ACCOUNT SOLUTIONS -->
+<section class="py-5" style="background:#0b0c10;color:#fff;">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-9">
+        <h2 class="text-white mb-2">Решения для счетов и регуляторные депозиты</h2>
+        <p class="text-white-50 mb-0" style="line-height:1.7;">Выберите подходящий счёт для ваших потребностей. Для заявителей на лицензию мы также предлагаем специальные гарантийные депозитные счета, соответствующие требованиям KIFA — отдельно от операционных счетов.</p>
+      </div>
+    </div>
+    <div class="row g-4 mb-4">
+      <div class="col-lg-6">
+        <div class="wk-card h-100 text-primary">
+          <h3 style="font-weight:600;margin-bottom:14px;"><i class="fa-solid fa-user fa-2xs border border-primary border-3 rounded-circle d-inline-flex align-items-center justify-content-center bg-black" style="width:40px;height:40px;"></i> Личный</h3>
+          <p style="color:rgba(255,255,255,.85);margin-bottom:16px;">Персональные финансовые услуги для частных лиц и семей, которые ценят конфиденциальность, гибкость и полный цифровой контроль.</p>
+          <ul style="padding-left:18px;margin:0;">
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Личные и семейные счета</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Дебетовые и виртуальные карты</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Крипто-дружественные сервисы</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Анонимные карты для повышенной конфиденциальности</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Только онлайн выписки по счёту</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Без телефонных звонков — связь через предпочтительную электронную почту</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;"><strong>Решения для счетов доступны нерезидентам</strong></li>
+          </ul>
+          <div class="mt-auto pt-3 d-flex justify-content-end flex-nowrap gap-2">
+            <a href="/open-account" class="btn btn-primary btn-sm px-4">Открыть счёт</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="wk-card h-100 text-success">
+          <h3 style="font-weight:600;margin-bottom:14px;"><i class="fa-solid fa-user-tie fa-2xs border border-success border-3 rounded-circle d-inline-flex align-items-center justify-content-center bg-black" style="width:40px;height:40px;"></i> Бизнес</h3>
+          <p style="color:rgba(255,255,255,.85);margin-bottom:16px;">Финансовая инфраструктура для предпринимателей и компаний, работающих через границы, с современными инструментами и оптимизированными процессами.</p>
+          <ul style="padding-left:18px;margin:0;">
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Бизнес-счета для компаний и профессионалов</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Карты для владельцев и членов команды</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Криптовалютные платежи и управление активами</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Карты для сотрудников с контролем расходов</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Полностью цифровые выписки и отчётность</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Политика связи только по электронной почте</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;"><strong>Бизнес-счета доступны для нерезидентов-основателей и компаний</strong></li>
+          </ul>
+          <div class="mt-auto pt-3 d-flex justify-content-end flex-nowrap gap-2">
+            <a href="/open-account" class="btn btn-success btn-sm px-4">Открыть счёт</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="wk-card h-100 text-danger">
+          <h3 style="font-weight:600;margin-bottom:14px;"><i class="fa-solid fa-user-group fa-2xs border border-danger border-3 rounded-circle d-inline-flex align-items-center justify-content-center bg-black" style="width:40px;height:40px;"></i> Корпоративный</h3>
+          <p style="color:rgba(255,255,255,.85);margin-bottom:16px;">Продвинутые финансовые решения для корпоративных структур, требующих масштабируемости, конфиденциальности и международного охвата.</p>
+          <ul style="padding-left:18px;margin:0;">
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Корпоративные и мульти-юридические счета</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Карты для руководителей и сотрудников</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Крипто и небанковские платёжные решения</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Карты с высоким уровнем приватности</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Только цифровые выписки и документация</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Без посещения отделений, без незапрошенных звонков</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;"><strong>Корпоративные решения доступны для нерезидентных организаций</strong></li>
+          </ul>
+          <div class="mt-auto pt-3 d-flex justify-content-end flex-nowrap gap-2">
+            <a href="/open-account" class="btn btn-danger btn-sm px-4">Открыть счёт</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="wk-card h-100 text-warning" style="border-color:rgba(255,193,7,0.3);">
+          <h3 style="font-weight:600;margin-bottom:14px;"><i class="fa-solid fa-shield-halved fa-2xs border border-warning border-3 rounded-circle d-inline-flex align-items-center justify-content-center bg-black" style="width:40px;height:40px;"></i> Гарантийный депозит KIFA</h3>
+          <p style="color:rgba(255,255,255,.85);margin-bottom:16px;">Специальный счёт для гарантийного лицензионного капитала, соответствующий требованиям <a href="https://kiribas.org" target="_blank" style="color:inherit;">Международного финансового управления Кирибати (KIFA)</a>.</p>
+          <ul style="padding-left:18px;margin:0;">
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;"><strong>Средства остаются собственностью акционеров</strong> — хранятся на ограниченных условиях</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Публично проверяемый капитал как доказательство соответствия регуляторным требованиям</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Отдельно от операционных счетов</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Включён надзорный доступ KIFA</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Период блокировки определяется условиями лицензии</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;"><strong>Требования зависят от типа лицензии</strong> — определяются KIFA на основании:</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;margin-left:1rem;">&#8226; Вид деятельности и категория лицензии</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;margin-left:1rem;">&#8226; Прогнозируемый объём операций</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;margin-left:1rem;">&#8226; Клиентская ёмкость и профиль рисков</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AD SLOT -->
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2701690512336282" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</div>
+
+<!-- CARDS & RATES -->
+<section class="py-5" style="background:#07080a;">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8 text-center">
+        <h2 class="text-white mb-3">Карты и рыночные курсы</h2>
+        <p class="text-white-50 mb-0">Карточные сети + актуальные справочные цены.</p>
+      </div>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-lg-6">
+        <div style="background:transparent;border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:1rem;height:100%;position:relative;overflow:hidden;">
+          <div class="text-white-50 small mb-2">Карточные сети</div>
+          <div id="cardRotator" style="position:relative;height:250px;">
+            <div class="card-slide" style="position:absolute;inset:0;opacity:1;transform:translateY(0);transition:opacity 900ms ease,transform 900ms ease;">
+              <img src="/images/cards/visa.webp" alt="Карта Visa" style="height:250px;width:100%;max-width:420px;object-fit:contain;display:block;margin:0 auto;border-radius:.5rem;" />
+            </div>
+            <div class="card-slide" style="position:absolute;inset:0;opacity:0;transform:translateY(6px);transition:opacity 900ms ease,transform 900ms ease;pointer-events:none;">
+              <img src="/images/cards/unionpay.webp" alt="Карта UnionPay" style="height:250px;width:100%;max-width:420px;object-fit:contain;display:block;margin:0 auto;border-radius:.5rem;" />
+            </div>
+            <div class="card-slide" style="position:absolute;inset:0;opacity:0;transform:translateY(6px);transition:opacity 900ms ease,transform 900ms ease;pointer-events:none;">
+              <img src="/images/cards/maestro.webp" alt="Карта Maestro" style="height:250px;width:100%;max-width:420px;object-fit:contain;display:block;margin:0 auto;border-radius:.5rem;" />
+            </div>
+          </div>
+          <div class="mt-3 text-white-50 small">Доступность карт зависит от юрисдикции и требований соответствия.</div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div style="background:transparent;border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:1rem;height:100%;">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="text-white-50 small">Актуальные справочные цены</div>
+            <div class="text-white-50 small">Обновлено: <span id="rates-updated">—</span> UTC</div>
+          </div>
+          <div style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:.75rem;padding:1rem;">
+            <div class="row g-3">
+              <div class="col-lg-6 col-md-6" style="flex:0 0 50%;max-width:50%;"><div class="text-white-50 small">EUR/USDT</div><div class="text-white fw-semibold" style="font-size:1.15rem;" id="rate-EURUSDT">—</div></div>
+              <div class="col-lg-6 col-md-6" style="flex:0 0 50%;max-width:50%;"><div class="text-white-50 small">USDC/USDT</div><div class="text-white fw-semibold" style="font-size:1.15rem;" id="rate-USDCUSDT">—</div></div>
+              <div class="col-lg-6 col-md-6" style="flex:0 0 50%;max-width:50%;"><div class="text-white-50 small">BTC/USDT</div><div class="text-white fw-semibold" style="font-size:1.15rem;" id="rate-BTCUSDT">—</div></div>
+              <div class="col-lg-6 col-md-6" style="flex:0 0 50%;max-width:50%;"><div class="text-white-50 small">ETH/USDT</div><div class="text-white fw-semibold" style="font-size:1.15rem;" id="rate-ETHUSDT">—</div></div>
+              <div class="col-lg-6 col-md-6" style="flex:0 0 50%;max-width:50%;"><div class="text-white-50 small">BNB/USDT</div><div class="text-white fw-semibold" style="font-size:1.15rem;" id="rate-BNBUSDT">—</div></div>
+              <div class="col-lg-6 col-md-6" style="flex:0 0 50%;max-width:50%;"><div class="text-white-50 small">SOL/USDT</div><div class="text-white fw-semibold" style="font-size:1.15rem;" id="rate-SOLUSDT">—</div></div>
+            </div>
+            <div class="text-white-50 small mt-3" style="line-height:1.4;">Это справочные цены (спот). Курсы исполнения могут отличаться из-за комиссий, спредов и ликвидности.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRYPTO -->
+<section class="py-5" style="background:#07080a;">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-6">
+        <span class="d-inline-flex align-items-center gap-2 px-3 py-2" style="border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);color:rgba(255,255,255,.82);font-size:.92rem;">
+          <span style="width:10px;height:10px;border-radius:999px;background:#dc3545;box-shadow:0 0 0 6px rgba(220,53,69,.15);display:inline-block;"></span>
+          Крипто-дополнение для счетов
+        </span>
+        <h2 class="text-white mt-3 mb-3" style="letter-spacing:-.02em;">Криптовалюта, интегрированная — с приоритетом безопасности</h2>
+        <p class="text-white-50 mb-4" style="line-height:1.7;">Активируйте крипто-раздел на вашем счёте и получите доступ к кошелькам для основных активов в нескольких сетях. Создано для современных платежей, казначейства и ончейн-инструментов — с контролем рисков и удобством пользователя в центре внимания.</p>
+        <div class="row g-3">
+          <div class="col-sm-6"><div class="p-3" style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:.75rem;"><div class="text-white fw-semibold mb-1">Мульти-сетевые кошельки</div><div class="text-white-50 small">Кошельки в ведущих сетях для основных валют.</div></div></div>
+          <div class="col-sm-6"><div class="p-3" style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:.75rem;"><div class="text-white fw-semibold mb-1">Приём онлайн-платежей</div><div class="text-white-50 small">Принимайте криптоплатежи для электронной коммерции и онлайн-продаж.</div></div></div>
+          <div class="col-sm-6"><div class="p-3" style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:.75rem;"><div class="text-white fw-semibold mb-1">Холодное хранение</div><div class="text-white-50 small">Инфраструктура кошельков, разработанная по принципам холодного хранения.</div></div></div>
+          <div class="col-sm-6"><div class="p-3" style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:.75rem;"><div class="text-white fw-semibold mb-1">Обмен и утилиты</div><div class="text-white-50 small">Обмен крипто&#x2194;фиат, стейкинг (отдельные активы) и кредиты под крипто-залог.</div></div></div>
+        </div>
+        <p class="text-white-50 small mt-4 mb-0">Комиссии зависят от вашего тарифа и выбранных услуг.</p>
+      </div>
+      <div class="col-lg-6">
+        <div style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);box-shadow:0 18px 60px rgba(0,0,0,.55);border-radius:.75rem;overflow:hidden;">
+          <div class="p-4">
+            <div class="d-flex align-items-center justify-content-between gap-3 mb-3">
+              <h3 class="text-white mb-0" style="font-size:1.25rem;">Крипто FAQ</h3>
+              <span class="text-white-50 small">Быстрые ответы</span>
+            </div>
+            <div class="d-grid gap-2">
+              <a href="#" class="btn btn-outline-light text-start"><i class="fa-brands fa-bitcoin me-2 fa-lg" style="color:#FFD43B;"></i>Что такое Биткоин?</a>
+              <a href="#" class="btn btn-outline-light text-start"><i class="fa-solid fa-coins me-2 fa-lg" style="color:#74C0FC;"></i>Что такое криптовалюты?</a>
+              <a href="#" class="btn btn-outline-light text-start"><i class="fa-solid fa-shield-heart me-2 fa-lg" style="color:#ff0000;"></i>Безопасна ли криптовалюта? Что нужно знать</a>
+            </div>
+            <div class="mt-3 text-white-50 small" style="line-height:1.5;">Понятные объяснения, практические советы по безопасности и наш подход к хранению и управлению рисками.</div>
+            <div class="mt-2">
+              <img src="/images/crypto/bitcoin.webp" alt="биткоин" style="height:32px;width:auto;border-radius:.3rem;margin-right:1rem;" />
+              <img src="/images/crypto/ethereum.webp" alt="эфириум" style="height:32px;width:auto;border-radius:.3rem;margin-right:1rem;" />
+              <img src="/images/crypto/solana.webp" alt="solana" style="height:32px;width:auto;border-radius:.3rem;margin-right:1rem;" />
+              <img src="/images/crypto/usdt.webp" alt="usdt" style="height:32px;width:auto;border-radius:.3rem;margin-right:1rem;" />
+              <img src="/images/crypto/usdc.webp" alt="usdc" style="height:32px;width:auto;border-radius:.3rem;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AD SLOT -->
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2701690512336282" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="mt-auto footer-ax text-light">
+  <div class="container py-5">
+    <div class="row g-4 align-items-start">
+      <div class="col-12 col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <div style="width:14px;height:14px;border-radius:6px;background:rgba(255,255,255,.85);box-shadow:0 0 0 4px rgba(255,255,255,.08);flex:0 0 auto;"></div>
+          <div><div class="fw-semibold">Axsetra Banki</div><div class="small text-white-50">&copy; <span id="footer-year"></span> &#8226; Все права защищены</div></div>
+        </div>
+        <ul class="list-unstyled small mb-0 text-white-50">
+          <li><a href="https://kiribas.net/company/company/1/" style="color:rgba(255,255,255,.70);text-decoration:none;" target="_blank">Регистрация компании</a> CP-000022</li>
+          <li><a href="https://kiribas.org/licensed-entities/?q=axsetra" target="_blank" style="color:rgba(255,255,255,.70);text-decoration:none;">Лицензия KBN:</a> KBN-90-000001</li>
+          <li><span style="color:rgba(255,255,255,.75);">Зарегистрированный офис (неоперационный):</span> London (KI)</li>
+          <li><span style="color:rgba(255,255,255,.75);">Местоположение:</span> Киритимати, Кирибати</li>
+          <li class="mt-3 d-flex align-items-center gap-2">
+            <a style="color:rgba(255,255,255,.70);text-decoration:none;" href="mailto:info@axsetra.com">info@axsetra.com</a>
+            <button id="copyEmail" type="button" class="btn btn-sm btn-outline-light ms-1" style="border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.85);">Копировать</button>
+          </li>
+          <li class="mt-2"><a style="color:rgba(255,255,255,.70);text-decoration:none;" href="tel:+68675127188">+686 75127188</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div style="font-weight:600;color:rgba(255,255,255,.92);margin-bottom:1rem;">Продукты и политики</div>
+        <ul class="list-unstyled mb-0">
+          <li style="padding:.28rem 0;"><a href="#" style="color:rgba(255,255,255,.70);text-decoration:none;">Личный счёт</a></li>
+          <li style="padding:.28rem 0;"><a href="#" style="color:rgba(255,255,255,.70);text-decoration:none;">Бизнес-счёт</a></li>
+          <li style="padding:.28rem 0;margin-bottom:1rem;"><a href="#" style="color:rgba(255,255,255,.70);text-decoration:none;">Корпоративный счёт</a></li>
+          <li style="padding:.28rem 0;"><a href="#" style="color:rgba(255,255,255,.70);text-decoration:none;">Общие условия</a></li>
+          <li style="padding:.28rem 0;"><a href="#" style="color:rgba(255,255,255,.70);text-decoration:none;">Политика конфиденциальности</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px;">
+          <div style="font-weight:600;color:rgba(255,255,255,.92);margin-bottom:.5rem;">Уведомление о преемственности</div>
+          <p class="small mb-0 text-white-50">Axsetra.com является официальным продолжением Axsetra Banki, первоначально работавшего под доменом <strong style="color:rgba(255,255,255,.75);">axsetra.ki</strong>, активного с 2011 года.<br /><br />Переход на текущий домен не влияет на непрерывность банка, его идентичность или историческое присутствие.</p>
+        </div>
+      </div>
+    </div>
+    <hr style="border-color:rgba(255,255,255,.12);opacity:1;margin:1.5rem 0;" />
+    <div class="d-flex flex-column flex-md-row gap-2 justify-content-between small text-white-50">
+      <div class="d-flex align-items-center gap-2">
+        <span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.35);display:inline-block;"></span>
+        <span>Для конфиденциальных данных рекомендуется безопасная связь.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </BaseLayout>
-
-<style>
-  .hero-logo {
-    max-width: 200px;
-    height: auto;
-    margin-bottom: 20px;
-    border-radius: 8px;
-  }
-  .tagline { font-size: 1.4rem; font-weight: 600; opacity: 1; margin-bottom: 8px; }
-  .registration-info { background: white; border-radius: 8px; padding: 32px; margin-top: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; }
-  .registration-info h2 { margin-bottom: 16px; color: #1a1a2e; }
-  .registration-info p { margin: 6px 0; color: #555; }
-</style>

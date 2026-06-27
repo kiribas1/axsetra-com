@@ -1,74 +1,312 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const lang = 'es';
+const currentPath = Astro.url.pathname;
+const locales = ['en', 'es', 'zh', 'ru', 'pt', 'ar'];
+const langNames: Record<string, string> = {
+  en: 'English', es: 'Espanol', zh: '中文', ru: 'Русский', pt: 'Portugues', ar: 'العربية',
+};
 ---
 
 <BaseLayout
-  title="Axsetra Banki | Banca Digital con Privacidad"
-  description="Banco digital 100% en línea. Sin sucursales. Abre una cuenta bancaria gratuita cómodamente desde casa. Cuentas personales, empresariales y corporativas con servicios cripto."
-  lang="es"
+  title="Axsetra Banki | Servicios Financieros Digitales, Cuentas y Pagos Internacionales"
+  description="Axsetra Banki ofrece servicios financieros digitales modernos para individuos y empresas: infraestructura de cuentas, tarjetas y soluciones de pago internacional para un mundo global y digital."
+  lang={lang}
+  ogImage="https://axsetra.com/images/logo.webp"
 >
-  <Fragment slot="logo">Axsetra Banki</Fragment>
-  <Fragment slot="footer-name">Axsetra Banki</Fragment>
 
-  <section class="hero">
-    <img src="/images/logo.webp" alt="Logo" class="hero-logo" width="200" height="auto" />
-    <h1>Axsetra Banki</h1>
-    <p class="tagline">Donde la privacidad se encuentra con el rendimiento</p>
-    <p>100% en línea. Sin sucursales. Abre una cuenta bancaria gratuita cómodamente desde casa.</p>
-  </section>
-
-  <div class="ad-slot">Espacio Publicitario - Google AdSense</div>
-
-  <div class="card-grid">
-    <article class="card">
-      <h2>Cuentas Personales</h2>
-      <p>Tarjetas de débito y virtuales, servicios compatibles con criptomonedas, tarjetas anónimas para mayor privacidad. Comunicación solo por correo electrónico, sin llamadas telefónicas.</p>
-    </article>
-    <article class="card">
-      <h2>Cuentas Empresariales</h2>
-      <p>Para emprendedores y empresas que operan a través de fronteras. Tarjetas para empleados con controles de gasto y capacidades de pago con criptomonedas.</p>
-    </article>
-    <article class="card">
-      <h2>Cuentas Corporativas</h2>
-      <p>Soluciones financieras avanzadas para estructuras corporativas que requieren escalabilidad, discreción y alcance internacional. Soporte multi-entidad y opciones de tarjetas de alta privacidad.</p>
-    </article>
-    <article class="card">
-      <h2>Depósito de Garantía KIFA</h2>
-      <p>Cuenta especializada para capital de licencia. Los fondos permanecen como propiedad de los accionistas bajo condiciones restringidas, separados de las cuentas operativas.</p>
-    </article>
-    <article class="card">
-      <h2>Servicios Cripto</h2>
-      <p>Billeteras cripto multi-red, custodia en cold-wallet, intercambio cripto a fiat y opciones de staking.</p>
-    </article>
-    <article class="card">
-      <h2>Redes de Tarjetas</h2>
-      <p>Visa, UnionPay, Maestro. Estados de cuenta digitales exclusivamente.</p>
-    </article>
+<!-- NAVBAR -->
+<header class="app-header">
+  <div class="container">
+    <div class="d-flex flex-column flex-md-row align-items-center py-3">
+      <a href={`/${lang}/`} class="d-flex align-items-center text-decoration-none">
+        <img src="/images/logo.webp" alt="Axsetra Banki" height="110" class="me-2" />
+      </a>
+      <div class="mt-3 mt-md-0 ms-md-auto text-center text-md-end w-100 w-md-auto d-flex flex-column flex-md-row align-items-center gap-3">
+        <nav class="lang-nav">
+          {locales.map((loc) => {
+            const path = currentPath.replace(`/${lang}/`, `/${loc}/`);
+            return <a href={path} class={loc === lang ? 'active' : ''}>{langNames[loc]}</a>;
+          })}
+        </nav>
+        <div>
+          <a href="/login" class="me-3 fw-semibold" style="color:#dc3545;">Iniciar Sesion</a>
+          <a href="/open-account" class="btn btn-danger py-2 px-3">Abrir Cuenta Online</a>
+        </div>
+      </div>
+    </div>
   </div>
+</header>
 
-  <div class="ad-slot">Espacio Publicitario - Google AdSense</div>
+<main class="flex-fill">
 
-  <section class="registration-info">
-    <h2>Registro y Legal</h2>
-    <p><strong>Registro de Empresa:</strong> CP-000022</p>
-    <p><strong>Licencia (KBN):</strong> KBN-90-000001</p>
-    <p><strong>Oficina Registrada:</strong> London (KI)</p>
-    <p><strong>Ubicación Operativa:</strong> Kiritimati, Kiribati</p>
-    <p><strong>Contacto:</strong> info@axsetra.com | +686 75127188</p>
-  </section>
+<!-- HERO -->
+<section class="hero-wk">
+  <div class="hero-overlay"></div>
+  <div class="container position-relative py-5">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="hero-panel hero-text">
+          <p class="lead hero-lead mb-3 fs-1 fw-bolder"><strong>Donde la privacidad se encuentra con el rendimiento</strong> en la banca digital moderna.</p>
+          <p class="lead hero-lead mb-4 fs-5 fw-bolder">Empoderamos a individuos y empresas para gestionar pagos, cuentas y activos digitales a traves de una plataforma financiera segura, enfocada en la privacidad y de alto rendimiento, creada para un mundo global y digital.</p>
+          <p class="lead hero-lead mb-4 fs-6 fw-bolder">100% en linea. Sin sucursales. Abra una cuenta bancaria gratuita comodamente desde casa.</p>
+          <div class="d-flex flex-wrap gap-2">
+            <a href="/open-account" class="btn btn-light btn-lg px-4">Abrir Cuenta</a>
+            <a href="/login" class="btn btn-outline-light btn-lg px-4">Iniciar Sesion</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <div class="ad-slot">Espacio Publicitario - Google AdSense</div>
+<!-- AD SLOT -->
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2701690512336282" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</div>
+
+<!-- ACCOUNT SOLUTIONS -->
+<section class="py-5" style="background:#0b0c10;color:#fff;">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-9">
+        <h2 class="text-white mb-2">Soluciones de cuentas y depositos regulatorios</h2>
+        <p class="text-white-50 mb-0" style="line-height:1.7;">Elija la cuenta adecuada para sus necesidades. Para solicitantes de licencias, tambien ofrecemos cuentas de deposito de garantia compatibles con KIFA, separadas de las cuentas operativas.</p>
+      </div>
+    </div>
+    <div class="row g-4 mb-4">
+      <div class="col-lg-6">
+        <div class="wk-card h-100 text-primary">
+          <h3 style="font-weight:600;margin-bottom:14px;"><i class="fa-solid fa-user fa-2xs border border-primary border-3 rounded-circle d-inline-flex align-items-center justify-content-center bg-black" style="width:40px;height:40px;"></i> Personal</h3>
+          <p style="color:rgba(255,255,255,.85);margin-bottom:16px;">Servicios financieros personales disenados para individuos y familias que valoran la privacidad, la flexibilidad y el control digital completo.</p>
+          <ul style="padding-left:18px;margin:0;">
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Cuentas personales y familiares</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Tarjetas de debito y virtuales</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Servicios compatibles con criptomonedas</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Tarjetas anonimas para mayor privacidad</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Estados de cuenta solo en linea</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Sin llamadas telefonicas — comunicacion por correo electronico preferido</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;"><strong>Soluciones de cuentas disponibles para no residentes</strong></li>
+          </ul>
+          <div class="mt-auto pt-3 d-flex justify-content-end flex-nowrap gap-2">
+            <a href="/open-account" class="btn btn-primary btn-sm px-4">Abrir Cuenta</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="wk-card h-100 text-success">
+          <h3 style="font-weight:600;margin-bottom:14px;"><i class="fa-solid fa-user-tie fa-2xs border border-success border-3 rounded-circle d-inline-flex align-items-center justify-content-center bg-black" style="width:40px;height:40px;"></i> Empresarial</h3>
+          <p style="color:rgba(255,255,255,.85);margin-bottom:16px;">Infraestructura financiera para emprendedores y empresas que operan a traves de fronteras, con herramientas modernas y procesos optimizados.</p>
+          <ul style="padding-left:18px;margin:0;">
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Cuentas comerciales para empresas y profesionales</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Tarjetas para propietarios y miembros del equipo</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Pagos con criptomonedas y gestion de activos</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Tarjetas para empleados con controles de gasto</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Estados de cuenta y reportes totalmente digitales</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Politica de comunicacion solo por correo electronico</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;"><strong>Cuentas comerciales disponibles para fundadores y empresas no residentes</strong></li>
+          </ul>
+          <div class="mt-auto pt-3 d-flex justify-content-end flex-nowrap gap-2">
+            <a href="/open-account" class="btn btn-success btn-sm px-4">Abrir Cuenta</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-6">
+        <div class="wk-card h-100 text-danger">
+          <h3 style="font-weight:600;margin-bottom:14px;"><i class="fa-solid fa-user-group fa-2xs border border-danger border-3 rounded-circle d-inline-flex align-items-center justify-content-center bg-black" style="width:40px;height:40px;"></i> Corporativo</h3>
+          <p style="color:rgba(255,255,255,.85);margin-bottom:16px;">Soluciones financieras avanzadas para estructuras corporativas que requieren escalabilidad, discrecion y alcance internacional.</p>
+          <ul style="padding-left:18px;margin:0;">
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Cuentas corporativas y multi-entidad</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Tarjetas para ejecutivos y empleados</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Soluciones de pago cripto y no bancarias</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Opciones de tarjetas de alta privacidad</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Estados de cuenta y documentacion solo digital</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Sin visitas a sucursales, sin llamadas no solicitadas</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;"><strong>Soluciones corporativas accesibles para organizaciones no residentes</strong></li>
+          </ul>
+          <div class="mt-auto pt-3 d-flex justify-content-end flex-nowrap gap-2">
+            <a href="/open-account" class="btn btn-danger btn-sm px-4">Abrir Cuenta</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="wk-card h-100 text-warning" style="border-color:rgba(255,193,7,0.3);">
+          <h3 style="font-weight:600;margin-bottom:14px;"><i class="fa-solid fa-shield-halved fa-2xs border border-warning border-3 rounded-circle d-inline-flex align-items-center justify-content-center bg-black" style="width:40px;height:40px;"></i> Deposito de Garantia KIFA</h3>
+          <p style="color:rgba(255,255,255,.85);margin-bottom:16px;">Cuenta dedicada para capital de garantia de licencia, compatible con los requisitos de la <a href="https://kiribas.org" target="_blank" style="color:inherit;">Autoridad Financiera Internacional de Kiribati (KIFA)</a>.</p>
+          <ul style="padding-left:18px;margin:0;">
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;"><strong>Los fondos siguen siendo propiedad de los accionistas</strong> — mantenidos bajo condiciones restringidas</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Capital verificable publicamente como prueba de cumplimiento regulatorio</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Separado de las cuentas operativas</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Acceso de supervision KIFA incluido</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;">Periodo de bloqueo definido por los terminos de la licencia</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;"><strong>Los requisitos varian segun el tipo de licencia</strong> — determinados por KIFA segun:</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;margin-left:1rem;">&#8226; Actividad comercial y categoria de licencia</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;margin-left:1rem;">&#8226; Volumen operativo proyectado</li>
+            <li style="color:rgba(255,255,255,.80);margin-bottom:8px;margin-left:1rem;">&#8226; Capacidad del cliente y perfil de riesgo</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AD SLOT -->
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2701690512336282" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</div>
+
+<!-- CARDS & RATES -->
+<section class="py-5" style="background:#07080a;">
+  <div class="container">
+    <div class="row justify-content-center mb-4">
+      <div class="col-lg-8 text-center">
+        <h2 class="text-white mb-3">Tarjetas y Tasas de Mercado</h2>
+        <p class="text-white-50 mb-0">Redes de tarjetas + ultimos precios de referencia.</p>
+      </div>
+    </div>
+    <div class="row g-4 align-items-stretch">
+      <div class="col-lg-6">
+        <div style="background:transparent;border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:1rem;height:100%;position:relative;overflow:hidden;">
+          <div class="text-white-50 small mb-2">Redes de tarjetas</div>
+          <div id="cardRotator" style="position:relative;height:250px;">
+            <div class="card-slide" style="position:absolute;inset:0;opacity:1;transform:translateY(0);transition:opacity 900ms ease,transform 900ms ease;">
+              <img src="/images/cards/visa.webp" alt="Tarjeta Visa" style="height:250px;width:100%;max-width:420px;object-fit:contain;display:block;margin:0 auto;border-radius:.5rem;" />
+            </div>
+            <div class="card-slide" style="position:absolute;inset:0;opacity:0;transform:translateY(6px);transition:opacity 900ms ease,transform 900ms ease;pointer-events:none;">
+              <img src="/images/cards/unionpay.webp" alt="Tarjeta UnionPay" style="height:250px;width:100%;max-width:420px;object-fit:contain;display:block;margin:0 auto;border-radius:.5rem;" />
+            </div>
+            <div class="card-slide" style="position:absolute;inset:0;opacity:0;transform:translateY(6px);transition:opacity 900ms ease,transform 900ms ease;pointer-events:none;">
+              <img src="/images/cards/maestro.webp" alt="Tarjeta Maestro" style="height:250px;width:100%;max-width:420px;object-fit:contain;display:block;margin:0 auto;border-radius:.5rem;" />
+            </div>
+          </div>
+          <div class="mt-3 text-white-50 small">La disponibilidad de tarjetas depende de la jurisdiccion y los requisitos de cumplimiento.</div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div style="background:transparent;border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:1rem;height:100%;">
+          <div class="d-flex align-items-center justify-content-between mb-2">
+            <div class="text-white-50 small">Ultimos precios de referencia</div>
+            <div class="text-white-50 small">Actualizado: <span id="rates-updated">—</span> UTC</div>
+          </div>
+          <div style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:.75rem;padding:1rem;">
+            <div class="row g-3">
+              <div class="col-lg-6 col-md-6" style="flex:0 0 50%;max-width:50%;"><div class="text-white-50 small">EUR/USDT</div><div class="text-white fw-semibold" style="font-size:1.15rem;" id="rate-EURUSDT">—</div></div>
+              <div class="col-lg-6 col-md-6" style="flex:0 0 50%;max-width:50%;"><div class="text-white-50 small">USDC/USDT</div><div class="text-white fw-semibold" style="font-size:1.15rem;" id="rate-USDCUSDT">—</div></div>
+              <div class="col-lg-6 col-md-6" style="flex:0 0 50%;max-width:50%;"><div class="text-white-50 small">BTC/USDT</div><div class="text-white fw-semibold" style="font-size:1.15rem;" id="rate-BTCUSDT">—</div></div>
+              <div class="col-lg-6 col-md-6" style="flex:0 0 50%;max-width:50%;"><div class="text-white-50 small">ETH/USDT</div><div class="text-white fw-semibold" style="font-size:1.15rem;" id="rate-ETHUSDT">—</div></div>
+              <div class="col-lg-6 col-md-6" style="flex:0 0 50%;max-width:50%;"><div class="text-white-50 small">BNB/USDT</div><div class="text-white fw-semibold" style="font-size:1.15rem;" id="rate-BNBUSDT">—</div></div>
+              <div class="col-lg-6 col-md-6" style="flex:0 0 50%;max-width:50%;"><div class="text-white-50 small">SOL/USDT</div><div class="text-white fw-semibold" style="font-size:1.15rem;" id="rate-SOLUSDT">—</div></div>
+            </div>
+            <div class="text-white-50 small mt-3" style="line-height:1.4;">Estos son precios de referencia (spot). Las tasas de ejecucion pueden diferir debido a comisiones, spreads y liquidez.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CRYPTO -->
+<section class="py-5" style="background:#07080a;">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-6">
+        <span class="d-inline-flex align-items-center gap-2 px-3 py-2" style="border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);color:rgba(255,255,255,.82);font-size:.92rem;">
+          <span style="width:10px;height:10px;border-radius:999px;background:#dc3545;box-shadow:0 0 0 6px rgba(220,53,69,.15);display:inline-block;"></span>
+          Complemento cripto para cuentas
+        </span>
+        <h2 class="text-white mt-3 mb-3" style="letter-spacing:-.02em;">Cripto, integrado — con un enfoque en la seguridad</h2>
+        <p class="text-white-50 mb-4" style="line-height:1.7;">Active la seccion cripto en su cuenta y acceda a billeteras para los principales activos en multiples redes. Disenado para pagos modernos, tesoreria y utilidades on-chain — manteniendo los controles de riesgo y la experiencia del usuario en el centro.</p>
+        <div class="row g-3">
+          <div class="col-sm-6"><div class="p-3" style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:.75rem;"><div class="text-white fw-semibold mb-1">Billeteras multi-red</div><div class="text-white-50 small">Billeteras en las principales cadenas y redes para las principales monedas.</div></div></div>
+          <div class="col-sm-6"><div class="p-3" style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:.75rem;"><div class="text-white fw-semibold mb-1">Recepcion de pagos en linea</div><div class="text-white-50 small">Reciba pagos cripto para comercio electronico y ventas en linea.</div></div></div>
+          <div class="col-sm-6"><div class="p-3" style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:.75rem;"><div class="text-white fw-semibold mb-1">Custodia en cold-wallet</div><div class="text-white-50 small">Infraestructura de billeteras disenada con principios de almacenamiento en frio.</div></div></div>
+          <div class="col-sm-6"><div class="p-3" style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);border-radius:.75rem;"><div class="text-white fw-semibold mb-1">Intercambio y utilidades</div><div class="text-white-50 small">Intercambio cripto&#x2194;fiat, staking (activos seleccionados) y prestamos respaldados por colateral cripto.</div></div></div>
+        </div>
+        <p class="text-white-50 small mt-4 mb-0">Las comisiones dependen de su plan y servicios seleccionados.</p>
+      </div>
+      <div class="col-lg-6">
+        <div style="border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.03);box-shadow:0 18px 60px rgba(0,0,0,.55);border-radius:.75rem;overflow:hidden;">
+          <div class="p-4">
+            <div class="d-flex align-items-center justify-content-between gap-3 mb-3">
+              <h3 class="text-white mb-0" style="font-size:1.25rem;">Preguntas Frecuentes Cripto</h3>
+              <span class="text-white-50 small">Respuestas rapidas</span>
+            </div>
+            <div class="d-grid gap-2">
+              <a href="#" class="btn btn-outline-light text-start"><i class="fa-brands fa-bitcoin me-2 fa-lg" style="color:#FFD43B;"></i>Que es Bitcoin?</a>
+              <a href="#" class="btn btn-outline-light text-start"><i class="fa-solid fa-coins me-2 fa-lg" style="color:#74C0FC;"></i>Que son las criptomonedas?</a>
+              <a href="#" class="btn btn-outline-light text-start"><i class="fa-solid fa-shield-heart me-2 fa-lg" style="color:#ff0000;"></i>Es seguro el cripto? Lo que debe saber</a>
+            </div>
+            <div class="mt-3 text-white-50 small" style="line-height:1.5;">Explicaciones claras, consejos practicos de seguridad y como abordamos la custodia y los controles de riesgo.</div>
+            <div class="mt-2">
+              <img src="/images/crypto/bitcoin.webp" alt="bitcoin" style="height:32px;width:auto;border-radius:.3rem;margin-right:1rem;" />
+              <img src="/images/crypto/ethereum.webp" alt="ethereum" style="height:32px;width:auto;border-radius:.3rem;margin-right:1rem;" />
+              <img src="/images/crypto/solana.webp" alt="solana" style="height:32px;width:auto;border-radius:.3rem;margin-right:1rem;" />
+              <img src="/images/crypto/usdt.webp" alt="usdt" style="height:32px;width:auto;border-radius:.3rem;margin-right:1rem;" />
+              <img src="/images/crypto/usdc.webp" alt="usdc" style="height:32px;width:auto;border-radius:.3rem;" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AD SLOT -->
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-2701690512336282" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+</div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="mt-auto footer-ax text-light">
+  <div class="container py-5">
+    <div class="row g-4 align-items-start">
+      <div class="col-12 col-lg-4">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <div style="width:14px;height:14px;border-radius:6px;background:rgba(255,255,255,.85);box-shadow:0 0 0 4px rgba(255,255,255,.08);flex:0 0 auto;"></div>
+          <div><div class="fw-semibold">Axsetra Banki</div><div class="small text-white-50">&copy; <span id="footer-year"></span> &#8226; Todos los derechos reservados</div></div>
+        </div>
+        <ul class="list-unstyled small mb-0 text-white-50">
+          <li><a href="https://kiribas.net/company/company/1/" style="color:rgba(255,255,255,.70);text-decoration:none;" target="_blank">Registro de Empresa</a> CP-000022</li>
+          <li><a href="https://kiribas.org/licensed-entities/?q=axsetra" target="_blank" style="color:rgba(255,255,255,.70);text-decoration:none;">Licencia KBN:</a> KBN-90-000001</li>
+          <li><span style="color:rgba(255,255,255,.75);">Oficina Registrada (no operativa):</span> London (KI)</li>
+          <li><span style="color:rgba(255,255,255,.75);">Ubicacion:</span> Kiritimati, Kiribati</li>
+          <li class="mt-3 d-flex align-items-center gap-2">
+            <a style="color:rgba(255,255,255,.70);text-decoration:none;" href="mailto:info@axsetra.com">info@axsetra.com</a>
+            <button id="copyEmail" type="button" class="btn btn-sm btn-outline-light ms-1" style="border-color:rgba(255,255,255,.25);color:rgba(255,255,255,.85);">Copiar</button>
+          </li>
+          <li class="mt-2"><a style="color:rgba(255,255,255,.70);text-decoration:none;" href="tel:+68675127188">+686 75127188</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div style="font-weight:600;color:rgba(255,255,255,.92);margin-bottom:1rem;">Productos y Politicas</div>
+        <ul class="list-unstyled mb-0">
+          <li style="padding:.28rem 0;"><a href="#" style="color:rgba(255,255,255,.70);text-decoration:none;">Cuenta Personal</a></li>
+          <li style="padding:.28rem 0;"><a href="#" style="color:rgba(255,255,255,.70);text-decoration:none;">Cuenta Empresarial</a></li>
+          <li style="padding:.28rem 0;margin-bottom:1rem;"><a href="#" style="color:rgba(255,255,255,.70);text-decoration:none;">Cuenta Corporativa</a></li>
+          <li style="padding:.28rem 0;"><a href="#" style="color:rgba(255,255,255,.70);text-decoration:none;">Terminos Generales</a></li>
+          <li style="padding:.28rem 0;"><a href="#" style="color:rgba(255,255,255,.70);text-decoration:none;">Politica de Privacidad</a></li>
+        </ul>
+      </div>
+      <div class="col-12 col-lg-4">
+        <div style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px;">
+          <div style="font-weight:600;color:rgba(255,255,255,.92);margin-bottom:.5rem;">Aviso de Continuidad</div>
+          <p class="small mb-0 text-white-50">Axsetra.com es la continuacion oficial de Axsetra Banki, originalmente operado bajo el dominio <strong style="color:rgba(255,255,255,.75);">axsetra.ki</strong>, activo desde 2011.<br /><br />La transicion al dominio actual no afecta la continuidad del banco, su identidad ni su presencia historica.</p>
+        </div>
+      </div>
+    </div>
+    <hr style="border-color:rgba(255,255,255,.12);opacity:1;margin:1.5rem 0;" />
+    <div class="d-flex flex-column flex-md-row gap-2 justify-content-between small text-white-50">
+      <div class="d-flex align-items-center gap-2">
+        <span style="width:8px;height:8px;border-radius:999px;background:rgba(255,255,255,.35);display:inline-block;"></span>
+        <span>Se recomiendan comunicaciones seguras para datos sensibles.</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
 </BaseLayout>
-
-<style>
-  .hero-logo {
-    max-width: 200px;
-    height: auto;
-    margin-bottom: 20px;
-    border-radius: 8px;
-  }
-  .tagline { font-size: 1.4rem; font-weight: 600; opacity: 1; margin-bottom: 8px; }
-  .registration-info { background: white; border-radius: 8px; padding: 32px; margin-top: 32px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); text-align: center; }
-  .registration-info h2 { margin-bottom: 16px; color: #1a1a2e; }
-  .registration-info p { margin: 6px 0; color: #555; }
-</style>
