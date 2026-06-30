@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const lang = 'en';
+---
+
+<BaseLayout
+  title="Open Account – Axsetra Banki"
+  description="Registrations temporarily paused. Join the priority list to be notified when access reopens."
+  lang={lang}
+  robots="noindex,nofollow"
+>
+
+<header class="app-header">
+  <div class="container">
+    <div class="d-flex flex-column align-items-center py-3">
+      <a href={`/${lang}/`} class="d-flex align-items-center text-decoration-none">
+        <img src="/images/logo.webp" alt="Axsetra Banki" height="90" />
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="flex-fill reg-wrap">
+  <div class="container">
+    <div class="reg-card">
+      <div class="reg-topline"></div>
+      <div class="reg-card-body">
+
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span class="status-text">Registrations temporarily closed</span>
+        </div>
+
+        <h1 class="reg-title">
+          We choose quality over scale.
+        </h1>
+
+        <p class="reg-p1">
+          Over the past days we have experienced demand well beyond our initial projections. To protect the experience of our existing users — performance, responsiveness and reliability — we have decided to temporarily suspend new registrations.
+        </p>
+
+        <p class="reg-p2">
+          This is not a rejection. It is a deliberate pause. We are actively expanding our infrastructure and hardware capacity to onboard new users without compromising service quality.
+        </p>
+
+        <div class="protect-box">
+          <div class="protect-label">What we are protecting</div>
+          <div class="check-item">
+            <div class="check-icon">&#10003;</div>
+            <span class="check-text">Consistent performance and fast response times.</span>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">&#10003;</div>
+            <span class="check-text">Operational reliability during peak usage.</span>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">&#10003;</div>
+            <span class="check-text">Security-first processes with no shortcuts.</span>
+          </div>
+          <div class="check-item">
+            <div class="check-icon">&#10003;</div>
+            <span class="check-text">User experience that does not degrade as we grow.</span>
+          </div>
+        </div>
+
+        <div class="waitlist-box">
+          <h2 class="waitlist-title">Join the priority list</h2>
+          <p class="waitlist-desc">Leave your email below to be contacted as soon as access is reopened.</p>
+
+          <div id="form-wrap">
+            <form id="waitlistForm">
+              <div class="form-group">
+                <label for="waitlist-email">Email address</label>
+                <input
+                  id="waitlist-email"
+                  name="email"
+                  type="email"
+                  required
+                  class="input-dark"
+                  placeholder="name@company.com"
+                />
+              </div>
+
+              <button type="submit" class="btn btn-danger notify-btn">
+                Notify me when access opens
+              </button>
+            </form>
+          </div>
+
+          <div id="form-success" class="form-success">
+            <div class="success-icon">&#10003;</div>
+            <div class="success-title">You're on the list.</div>
+            <div class="success-desc">We'll contact you as soon as capacity is expanded.</div>
+          </div>
+
+          <p class="no-spam">Priority notifications only. No spam.</p>
+        </div>
+
+        <p class="contact-footer">
+          We will only contact you when capacity is expanded or when access becomes available.<br />
+          For urgent requests, partnerships or enterprise use cases, please reach out at
+          <a href="mailto:info@axsetra.com" class="contact-email-link">info@axsetra.com</a>
+          with a brief description of your needs.
+        </p>
+
+        <div class="back-home-wrap">
+          <a href={`/${lang}/`} class="back-home-link">&larr; Back to home</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>
+
+</BaseLayout>
+
+<style>
+  .reg-wrap{flex:1 0 auto;display:flex;align-items:center;padding:64px 0;background:radial-gradient(1100px 650px at 15% 8%,rgba(255,255,255,.05),transparent 60%),radial-gradient(900px 500px at 82% 20%,rgba(220,53,69,.12),transparent 55%),linear-gradient(180deg,#070a0f 0%,#05060a 100%);}
+  .reg-card{border:1px solid rgba(255,255,255,.08);background:rgba(8,10,14,.90);backdrop-filter:blur(10px);border-radius:18px;box-shadow:0 22px 70px rgba(0,0,0,.60);overflow:hidden;max-width:680px;margin:0 auto;}
+  .reg-topline{height:2px;background:linear-gradient(90deg,rgba(220,53,69,0),rgba(220,53,69,.75),rgba(220,53,69,0));}
+  .reg-card-body{padding:2.5rem;}
+  .status-badge{display:inline-flex;align-items:center;gap:.6rem;padding:7px 14px;border-radius:999px;border:1px solid rgba(255,193,7,.25);background:rgba(255,193,7,.06);margin-bottom:2rem;}
+  .status-dot{width:10px;height:10px;border-radius:999px;background:#ffc107;box-shadow:0 0 0 5px rgba(255,193,7,.15);display:inline-block;animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 5px rgba(255,193,7,.15);}50%{box-shadow:0 0 0 9px rgba(255,193,7,.05);}}
+  .status-text{color:rgba(255,255,255,.85);font-size:.9rem;font-weight:600;}
+  .reg-title{color:#fff;font-size:clamp(1.5rem,4vw,2rem);font-weight:700;letter-spacing:-.02em;margin-bottom:.75rem;line-height:1.25;}
+  .reg-p1{color:rgba(255,255,255,.75);font-size:1.05rem;line-height:1.7;margin-bottom:1.5rem;}
+  .reg-p2{color:rgba(255,255,255,.65);line-height:1.65;margin-bottom:2rem;}
+  .protect-box{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:1.25rem 1.5rem;margin-bottom:2rem;}
+  .protect-label{color:rgba(255,255,255,.9);font-weight:600;margin-bottom:.75rem;}
+  .check-item{display:flex;align-items:flex-start;gap:.75rem;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.06);}
+  .check-item:last-child{border-bottom:none;}
+  .check-icon{width:22px;height:22px;border-radius:999px;background:rgba(220,53,69,.12);border:1px solid rgba(220,53,69,.25);display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;font-size:.75rem;color:#ff6b6b;}
+  .check-text{color:rgba(255,255,255,.75);font-size:.95rem;}
+  .waitlist-box{background:rgba(220,53,69,.06);border:1px solid rgba(220,53,69,.18);border-radius:14px;padding:1.5rem;}
+  .waitlist-title{color:#fff;font-size:1.15rem;font-weight:600;margin-bottom:.35rem;margin-top:0;}
+  .waitlist-desc{color:rgba(255,255,255,.6);font-size:.92rem;margin-bottom:1.25rem;}
+  .form-group{margin-bottom:.75rem;}
+  .form-group label{display:block;color:rgba(255,255,255,.55);font-size:.85rem;margin-bottom:.35rem;}
+  .input-dark{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);color:#fff;width:100%;padding:.65rem 1rem;font-size:1rem;border-radius:.375rem;display:block;}
+  .input-dark:focus{outline:none;box-shadow:0 0 0 .20rem rgba(220,53,69,.18);border-color:rgba(220,53,69,.40);}
+  .input-dark::placeholder{color:rgba(255,255,255,.40);}
+  .notify-btn{width:100%;padding:.65rem 1rem;font-size:1rem;font-weight:600;}
+  .form-success{display:none;text-align:center;padding:1rem 0;}
+  .success-icon{font-size:1.5rem;margin-bottom:.5rem;}
+  .success-title{color:#fff;font-weight:600;margin-bottom:.25rem;}
+  .success-desc{color:rgba(255,255,255,.6);font-size:.92rem;}
+  .no-spam{color:rgba(255,255,255,.45);font-size:.82rem;margin-top:.75rem;margin-bottom:0;}
+  .contact-footer{color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.6;margin-top:1.5rem;margin-bottom:0;}
+  .contact-email-link{color:rgba(255,255,255,.75);text-decoration:none;}
+  .back-home-wrap{margin-top:1.5rem;}
+  .back-home-link{color:rgba(255,255,255,.55);text-decoration:none;font-size:.9rem;}
+</style>
+
+<script>
+  const waitlistForm = document.getElementById('waitlistForm');
+  waitlistForm?.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const formWrap = document.getElementById('form-wrap') as HTMLElement;
+    const formSuccess = document.getElementById('form-success') as HTMLElement;
+    formWrap.style.display = 'none';
+    formSuccess.style.display = 'block';
+  });
+</script>
